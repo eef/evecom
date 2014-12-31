@@ -1,18 +1,20 @@
 <div ng-controller="NavCtrl">
-  <md-sidenav class="md-sidenav-left" md-component-id="left">
+  <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
     <md-toolbar class="md-blue-grey-theme">
       <h1 class="md-toolbar-tools">
         EveCert
       </h1>
     </md-toolbar>
     <md-content class="md-padding">
-      <md-button ng-href="#/" class="md-primary">
-        Home
-      </md-button>
-      <md-button ng-click='signOut()' ng-show="user.id">Sign out</md-button>
-      <md-button ng-href="#/sign_in" ng-show="!user.id" class="md-primary">
-        Signin
-      </md-button>
+      <div layout="column" layout-margin>
+        <md-button ng-href="#/" class="md-primary">
+          Home
+        </md-button>
+        <md-button ng-click='signOut()' ng-show="user.id" class="md-da">Sign out</md-button>
+        <md-button ng-href="#/sign_in" ng-show="!user.id" class="md-primary">
+          Signin
+        </md-button>
+      </div>
     </md-content>
   </md-sidenav>
   <md-button style="position: absolute; top: 10px; right: 10px;" ng-click="toggleNav()">Menu</md-button>

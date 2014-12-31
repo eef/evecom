@@ -4,16 +4,16 @@
 
   </div>
   <div class="md-whiteframe-z1" flex>
-    <form ng-submit="submit()" class="user-sign-in" flex>
+    <form ng-submit="submitLogin(loginForm)" class="user-sign-in" flex>
       <div class="row" layout="column" layout-sm="column" layout-margin layout-align="center center">
         <p>Please sign in</p>
-        <md-text-float label="Username" ng-model="username" required></md-text-float>
-        <md-text-float label="Password" ng-model="password" type="password"></md-text-float>
+        <md-text-float id="email" name="email" label="Email" ng-model="loginForm.email" required="required"></md-text-float>
+        <md-text-float autocomplete="off" id="password" name="password" label="Password" ng-model="loginForm.password" type="password" required="required"></md-text-float>
       </div>
       <div layout="column" layout-sm="column" layout-margin layout-align="center center">
         <md-button class="md-primary md-raised">Signin</md-button>
       </div>
     </form>
   </div>
-  <div flex="20"></div>
+  <div flex="20"><md-button ng-click="showSimpleToast()">Toast</md-button></div>
 </div>
