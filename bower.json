@@ -1,0 +1,8 @@
+{
+  "name": "Assets and dependencies for MawNet",
+  "dependencies": {
+    "angular": "v1.3.8",
+    "restangular": "v1.4.0",
+    "ng-token-auth": "~0.0.24"
+  }
+}

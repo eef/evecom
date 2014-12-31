@@ -1,0 +1,21 @@
+defaults: &defaults
+  adapter: mysql2
+  username: root
+  password: 
+  host: localhost
+
+development:
+  database: evecert_new_dev
+  <<: *defaults
+
+test: &test
+  database: evecert_new_production
+  <<: *defaults
+
+staging:
+  database: evecert_new_staging
+  <<: *defaults
+
+production:
+  database: evecert_new_live
+  <<: *defaults
