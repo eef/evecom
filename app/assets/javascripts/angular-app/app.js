@@ -17,7 +17,11 @@ app.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $md
   }).when("/sign_in",{
     controller: "UserSessionCtrl",
     templateUrl: "user_sessions/sign_in.html"
+  }).when("/register",{
+    controller: "UserRegistrationCtrl",
+    templateUrl: "user_sessions/sign_in.html"
   });
+
 }]);
 
 app.run(['VERSION', '$rootScope', '$location', '$mdToast', function(VERSION, $rootScope, $location, $mdToast){
@@ -44,14 +48,14 @@ app.run(['VERSION', '$rootScope', '$location', '$mdToast', function(VERSION, $ro
     );
   };
 
-  $rootScope.$on('auth:login-success', function() {
-    $location.path('/');
-    $rootScope.showToast("Login successful!");
-  });
-
-  $rootScope.$on('auth:logout-success', function() {
-    $location.path('/sign_in');
-    $rootScope.showToast("You have been logged out!");
-  });
+  //$rootScope.$on('auth:login-success', function() {
+  //  $location.path('/');
+  //  //$rootScope.showToast("Login successful!");
+  //});
+  //
+  //$rootScope.$on('auth:logout-success', function() {
+  //  $location.path('/sign_in');
+  //  $rootScope.showToast("You have been logged out!");
+  //});
 
 }]);
