@@ -2,9 +2,10 @@ angular.module("eveCert").controller('NavCtrl', ['$scope', '$mdSidenav', '$locat
 
   $scope.toggleNav = function() {
     $mdSidenav('left').toggle();
-  }
+  };
 
-  $scope.$on('auth:login-success', function() {
+  $scope.$on('auth:login-success', function(event, user) {
+    $scope.user = user;
     $location.path("/");
     $rootScope.showToast("Login successful!");
   });

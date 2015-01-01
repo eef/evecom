@@ -6,16 +6,19 @@
       </h1>
     </md-toolbar>
     <md-content class="md-padding">
-      <div layout="column" layout-margin>
+      <div layout="column" layout-margin layout-align="left left">
         <md-button ng-href="#/" class="md-primary">
           Home
         </md-button>
         <md-button ng-click='signOut()' ng-show="user.id" class="md-da">Sign out</md-button>
+        <md-button ng-click='signOut()' ng-show="user.id" class="md-da">{{user.email}}</md-button>
         <md-button ng-href="#/sign_in" ng-show="!user.id" class="md-primary">
           Signin
         </md-button>
       </div>
     </md-content>
   </md-sidenav>
-  <md-button style="position: absolute; top: 10px; right: 10px;" ng-click="toggleNav()">Menu</md-button>
+  <md-button class="md-fab" layout="row" layout-align="center center" aria-label="Menu" style="padding: 5px; width: 34px; height: 33px; position: absolute; top: 10px; left: 10px;" ng-click="toggleNav()">
+    <i style="width: 24px; height: 24px;" class="icon svg-ic_menu_24px"></i>
+  </md-button>
 </div>
