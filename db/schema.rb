@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231065111) do
+ActiveRecord::Schema.define(version: 20150102225100) do
+
+  create_table "characters", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "character_id"
+    t.datetime "dob"
+    t.string   "race"
+    t.string   "bloodline"
+    t.string   "ancestry"
+    t.string   "gender"
+    t.string   "corporation_name"
+    t.string   "corporation_id"
+    t.string   "alliance_name"
+    t.string   "allience_id"
+    t.string   "faction_name"
+    t.string   "faction_id"
+    t.string   "clone_name"
+    t.decimal  "clone_skillpoints", precision: 16, scale: 2
+    t.decimal  "balance",           precision: 16, scale: 2
+    t.text     "skill_attributes"
+    t.datetime "cached_until"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider",                            null: false

@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
+
+  it { should validate_presence_of(:email) }
+
   context "create" do
     before(:each) do
       @user = FactoryGirl.build(:user)

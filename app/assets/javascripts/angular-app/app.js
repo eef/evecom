@@ -10,7 +10,7 @@ app = angular.module('eveCert', [
 
 app.constant('VERSION', 1.0);
 
-app.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $mdThemingProvider){
+app.config(['$routeProvider', '$mdThemingProvider', '$authProvider', function($routeProvider, $mdThemingProvider, $authProvider){
   $routeProvider.when("/",{
     controller: "MainCtrl",
     templateUrl: "home/index.html"
@@ -18,13 +18,17 @@ app.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $md
     controller: "UserSessionCtrl",
     templateUrl: "user_sessions/sign_in.html"
   }).when("/register",{
-    controller: "UserRegistrationCtrl",
-    templateUrl: "user_sessions/sign_in.html"
+    controller: "UserSessionCtrl",
+    templateUrl: "user_registrations/register.html"
   });
-
+  $authProvider.configure({
+    authProviderPaths : {
+      eve: "/auth/eve"
+    }
+  });
 }]);
 
-app.run(['VERSION', '$rootScope', '$location', '$mdToast', function(VERSION, $rootScope, $location, $mdToast){
+app.run(['VERSION', '$rootScope', '$location', '$mdToast', '$mdSidenav', function(VERSION, $rootScope, $location, $mdToast, $mdSidenav){
 
   $rootScope.toastPosition = {
     bottom: true,

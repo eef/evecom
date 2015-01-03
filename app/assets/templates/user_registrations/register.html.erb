@@ -4,14 +4,15 @@
 
   </div>
   <div class="md-whiteframe-z1" flex>
-    <form ng-submit="submitLogin(loginForm)" class="user-sign-in" flex>
+    <form ng-submit="submitRegistration(registrationForm)" role="form" ng-init="registrationForm = {}" class="user-sign-in" flex>
       <div class="row" layout="column" layout-sm="column" layout-margin layout-align="center center">
-        <p>Please sign in</p>
-        <md-text-float id="email" name="email" label="Email" ng-model="loginForm.email" required="required"></md-text-float>
-        <md-text-float autocomplete="off" id="password" name="password" label="Password" ng-model="loginForm.password" type="password" required="required"></md-text-float>
+        <p>Register</p>
+        <md-text-float id="email" name="email" label="Email" ng-model="registrationForm.email" required="required"></md-text-float>
+        <md-text-float autocomplete="off" id="password" name="password" label="Password" ng-model="registrationForm.password" type="password" required="required"></md-text-float>
+        <md-text-float autocomplete="off" id="password" name="password_confirmation" label="Confirm Password" ng-model="registrationForm.password_confirmation" type="password" required="required"></md-text-float>
       </div>
       <div layout="column" layout-sm="column" layout-margin layout-align="center center">
-        <md-button class="md-primary md-raised">Signin</md-button>
+        <md-button class="md-primary md-raised">Register</md-button>
       </div>
     </form>
   </div>

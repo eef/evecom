@@ -92,6 +92,16 @@
 	background-image: url(svg-sprite-navigation.svg);
 }
 
+.ic_menu_wht_1x {
+    background-repeat: no-repeat;
+    background-image: url(ic_menu_wht_1x.png);
+}
+
+.ic_menu_wht_1x {
+    background-repeat: no-repeat;
+    background-image: url(ic_menu_wht_1x.png);
+}
+
 .svg-ic_menu_24px {
 	background-position: 0 -360px;
 	background-repeat: no-repeat;

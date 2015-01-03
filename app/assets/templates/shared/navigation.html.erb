@@ -1,24 +1,37 @@
 <div ng-controller="NavCtrl">
   <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-    <md-toolbar class="md-blue-grey-theme">
+    <md-toolbar class="md-blue-grey-theme md-whiteframe-z1">
       <h1 class="md-toolbar-tools">
-        EveCert
+        EveCom
       </h1>
     </md-toolbar>
     <md-content class="md-padding">
-      <div layout="column" layout-margin layout-align="left left">
-        <md-button ng-href="#/" class="md-primary">
-          Home
-        </md-button>
-        <md-button ng-click='signOut()' ng-show="user.id" class="md-da">Sign out</md-button>
-        <md-button ng-click='signOut()' ng-show="user.id" class="md-da">{{user.email}}</md-button>
-        <md-button ng-href="#/sign_in" ng-show="!user.id" class="md-primary">
-          Signin
-        </md-button>
+      <div layout="column" layout-margin layout-align="right right">
+        <md-list>
+          <md-item>
+            <md-item-content>
+              <md-button ng-href="#/" class="md-primary">
+                Home
+              </md-button>
+            </md-item-content>
+          </md-item>
+          <md-item ng-show="user.signedIn">
+            <md-item-content>
+              <md-button ng-click='signOut()' class="md-primary">Logout</md-button>
+            </md-item-content>
+          </md-item>
+          <md-item ng-show="!user.signedIn">
+            <md-item-content>
+              <md-button ng-href="#/sign_in" class="md-primary">Login</md-button>
+            </md-item-content>
+          </md-item>
+          <md-item ng-show="!user.signedIn">
+            <md-item-content>
+              <md-button ng-href="#/register" class="md-primary">Register</md-button>
+            </md-item-content>
+          </md-item>
+        </md-list>
       </div>
     </md-content>
   </md-sidenav>
-  <md-button class="md-fab" layout="row" layout-align="center center" aria-label="Menu" style="padding: 5px; width: 34px; height: 33px; position: absolute; top: 10px; left: 10px;" ng-click="toggleNav()">
-    <i style="width: 24px; height: 24px;" class="icon svg-ic_menu_24px"></i>
-  </md-button>
 </div>
