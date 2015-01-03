@@ -1,8 +1,13 @@
-GEM
-  remote: https://rubygems.org/
+GIT
+  remote: git@github.com:eef/action_eve.git
+  revision: ea6640cf5ca07011daec6f4b6253a85329b85b1a
   specs:
     action_eve (0.0.1)
       rails (~> 4.1.8)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
     actionmailer (4.1.8)
       actionpack (= 4.1.8)
       actionview (= 4.1.8)
@@ -191,7 +196,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  action_eve
+  action_eve!
   angular-rails-templates
   angular_rails_csrf
   bson_ext
