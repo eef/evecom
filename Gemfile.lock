@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:eef/action_eve.git
+  revision: ea6640cf5ca07011daec6f4b6253a85329b85b1a
+  specs:
+    action_eve (0.0.1)
+      rails (~> 4.1.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -35,7 +42,18 @@ GEM
       rails (>= 3, < 5)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
+    bson (1.11.1)
+    bson_ext (1.11.1)
+      bson (~> 1.11.1)
     builder (3.2.2)
+    capybara (2.4.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    childprocess (0.5.5)
+      ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -64,6 +82,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
+    ffi (1.9.6)
     forgery (0.6.0)
     hashie (3.3.2)
     hike (1.2.3)
@@ -78,12 +97,21 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
+    mini_portile (0.6.2)
     minitest (5.5.0)
+    mongo (1.11.1)
+      bson (= 1.11.1)
     multi_json (1.10.1)
     mysql2 (0.3.17)
+    nokogiri (1.6.5)
+      mini_portile (~> 0.6.0)
+    oauth (0.4.7)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
     orm_adapter (0.5.0)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -124,6 +152,7 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
+    rubyzip (1.1.6)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
@@ -133,7 +162,13 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    spring (1.2.0)
+    selenium-webdriver (2.44.0)
+      childprocess (~> 0.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
+    shoulda-matchers (2.7.0)
+      activesupport (>= 3.0.0)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -153,13 +188,19 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    websocket (1.2.1)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  action_eve!
   angular-rails-templates
   angular_rails_csrf
+  bson_ext
+  capybara (~> 2.4.3)
   coffee-rails (~> 4.0.0)
   database_cleaner
   devise
@@ -169,11 +210,14 @@ DEPENDENCIES
   forgery (= 0.6.0)
   jbuilder (~> 2.0)
   jquery-rails
+  mongo
   mysql2
   omniauth
+  omniauth-oauth
   rails (= 4.1.8)
   rspec-rails (~> 3.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  spring
+  selenium-webdriver
+  shoulda-matchers
   uglifier (>= 1.3.0)

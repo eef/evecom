@@ -11,5 +11,6 @@
  * file per style scope.
  *
  *= require angular-material/angular-material.min
+ *= require angular-material-sprites/svg-sprite-navigation
  *= require_self
  */

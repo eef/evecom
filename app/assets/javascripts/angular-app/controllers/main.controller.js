@@ -1,6 +1,3 @@
-angular.module("eveCert").controller('MainCtrl', function($scope) {
+angular.module("eveCert").controller('MainCtrl', ['$scope', '$rootScope', '$mdSidenav', function($scope, $rootScope, $mdSidenav) {
 
-  $scope.message = 'This is Show orders screen';
-  console.log($scope.message);
-
-});
+}]);

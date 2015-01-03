@@ -1,0 +1,14 @@
+<div class="md-whiteframe-z1" ng-controller="TopNavCtrl" layout="column">
+  <md-toolbar md-scroll-shrink style="z-index: 61;">
+    <div class="md-toolbar-tools">
+      <md-button  layout="row" layout-align="center center" aria-label="Menu" style="padding: 5px; width: 34px; height: 33px;" ng-click="toggleNav()">
+        <i style="width: 24px; height: 24px;" class="icon ic_menu_wht_1x"></i>
+      </md-button>
+      <h3>
+        <span>EveCom</span>
+      </h3>
+      <md-button ng-show="user.signedIn" ng-click='signOut()'>Logout</md-button>
+      <md-button ng-show="user.signedIn" ng-href="#/settings">Profile</md-button>
+    </div>
+  </md-toolbar>
+ </div>
