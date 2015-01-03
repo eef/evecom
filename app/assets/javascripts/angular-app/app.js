@@ -5,7 +5,8 @@ app = angular.module('eveCert', [
   'ngAnimate',
   'ngAria',
   'ngMaterial',
-  'ng-token-auth'
+  'ng-token-auth',
+  'restangular'
 ]);
 
 app.constant('VERSION', 1.0);
@@ -20,11 +21,9 @@ app.config(['$routeProvider', '$mdThemingProvider', '$authProvider', function($r
   }).when("/register",{
     controller: "UserSessionCtrl",
     templateUrl: "user_registrations/register.html"
-  });
-  $authProvider.configure({
-    authProviderPaths : {
-      eve: "/auth/eve"
-    }
+  }).when("/add_character", {
+    controller: "EveApiCtrl",
+    templateUrl: "eve/add_character.html"
   });
 }]);
 
@@ -51,6 +50,20 @@ app.run(['VERSION', '$rootScope', '$location', '$mdToast', '$mdSidenav', functio
         .hideDelay(2000)
     );
   };
+
+  $rootScope.$on('auth:login-success', function(event, user) {
+    $location.path("/");
+    $rootScope.showToast("Login successful!");
+  });
+
+  $rootScope.$on('auth:logout-success', function() {
+    $location.path("/sign_in");
+    $rootScope.showToast("You have been logged out!");
+  });
+
+  $rootScope.$on('auth:registration-email-success', function() {
+    $rootScope.showToast("Thank you for registering! Please confirm your email address");
+  });
 
   //$rootScope.$on('auth:login-success', function() {
   //  $location.path('/');

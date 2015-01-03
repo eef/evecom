@@ -26,6 +26,9 @@
 
 //= require components/ng-token-auth/dist/ng-token-auth.min
 
+//= require components/lodash/dist/lodash
+//= require components/restangular/src/restangular
+
 //= require ./angular-app/app
 //= require_tree ../templates
 //= require_tree ./angular-app/modules

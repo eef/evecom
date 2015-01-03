@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102225100) do
+ActiveRecord::Schema.define(version: 20150103083216) do
 
   create_table "characters", force: true do |t|
     t.string   "name"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20150102225100) do
     t.decimal  "balance",           precision: 16, scale: 2
     t.text     "skill_attributes"
     t.datetime "cached_until"
+    t.integer  "bitmask"
+    t.datetime "key_expires"
   end
 
   create_table "users", force: true do |t|

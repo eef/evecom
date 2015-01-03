@@ -14,3 +14,7 @@
  *= require angular-material-sprites/svg-sprite-navigation
  *= require_self
  */
+
+.long > input {
+    width: 400px;
+}
