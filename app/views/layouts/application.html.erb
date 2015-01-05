@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<md-progress-linear ng-show="loading" md-mode="indeterminate" md-scroll-shrink style="z-index: 62; position: absolute; top: 0;"></md-progress-linear>
 <ng-include src="'shared/top_navigation.html'"></ng-include>
 <ng-include src="'shared/navigation.html'"></ng-include>
 <md-content id="ng-view" ng-view md-scroll-y></md-content>

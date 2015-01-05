@@ -62,6 +62,7 @@ app.run(['VERSION', '$rootScope', '$location', '$mdToast', '$mdSidenav', functio
   });
 
   $rootScope.$on('auth:registration-email-success', function() {
+    $location.path("/");
     $rootScope.showToast("Thank you for registering! Please confirm your email address");
   });
 

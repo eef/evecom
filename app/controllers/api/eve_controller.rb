@@ -2,6 +2,8 @@ class Api::EveController < ApplicationController
 
   respond_to :json
 
+  before_action :authenticate_user!
+
   def characters
     api = ActionEve::API.new(id: params[:eve][:key_id], vcode: params[:eve][:verification_code])
     puts api_params.inspect
@@ -17,6 +19,9 @@ class Api::EveController < ApplicationController
     render json: characters
   end
 
+  def add_characters
+    
+  end
 
 
   def api_params
