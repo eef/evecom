@@ -4,7 +4,7 @@
   </div>
   <div class="md-whiteframe-z1" flex>
     <md-content md-scroll-y style="min-height: 100px;" class="md-padding">
-      <form ng-submit="getCharacters(addCharacterForm)" role="form" class="user-sign-in" ng-show="!showCharacters" flex>
+      <form ng-submit="getCharacters(addCharacterForm)" role="form" class="user-sign-in add_characters" ng-show="!showCharacters" flex>
         <div class="row" layout="column" layout-sm="column" layout-margin layout-align="center center">
           <h2>Add new characters</h2>
           <p>
@@ -23,7 +23,7 @@
           <md-button class="md-primary md-raised">Get Characters</md-button>
         </div>
       </form>
-      <div ng-show="showCharacters">
+      <div ng-show="showCharacters" class="choose_character">
         <div class="row" layout="row" ng-init="add_characters = {}" layout-sm="column" layout-margin layout-align="center center">
           <div flex layout="column" class="md-padding" layout-align="center center" ng-repeat="character in characters">
               <md-button class="md-fab" style="width: 150px; height: 150px; background-size: 150px 150px; background-image: url('http://image.eveonline.com/Character/{{character.id}}_256.jpg');"></md-button>
