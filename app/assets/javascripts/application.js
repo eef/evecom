@@ -21,6 +21,9 @@
 //= require components/angular-material/angular-material
 //
 //= require components/angular-route/angular-route
+//= require components/angular-resource/angular-resource
+//= require components/angular-loading-bar/build/loading-bar
+
 
 //= require angular-rails-templates
 

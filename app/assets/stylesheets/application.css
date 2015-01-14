@@ -12,6 +12,7 @@
  *
  *= require angular-material/angular-material.min
  *= require angular-material-sprites/svg-sprite-navigation
+ *= require loading-bar.min
  *= require_self
  */
 
@@ -19,32 +20,40 @@
     width: 400px;
 }
 
-.choose_character.ng-enter, .choose_character.ng-leave {
-    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    position: relative;
-    display: block;
+.avatar-medium {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    margin: 16px;
 }
 
-.choose_character.ng-leave.ng-leave-active, {
-    -webkit-transform: rotateX(90deg) rotateZ(90deg);
-    -moz-transform: rotateX(90deg) rotateZ(90deg);
-    -ms-transform: rotateX(90deg) rotateZ(90deg);
-    -o-transform: rotateX(90deg) rotateZ(90deg);
-    transform: rotateX(90deg) rotateZ(90deg);
+.list-content {
+    -webkit-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    -moz-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    -ms-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    -o-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+}
+
+.added-character {
+    padding-left: 30%;
+    background-color: #BCED91;
+}
+
+.md-tile-content h3, .md-tile-content h4 {
+    -webkit-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    -moz-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    -ms-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    -o-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+}
+
+.hidden {
+    -webkit-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    -moz-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    -ms-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    -o-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
+    transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
     opacity: 0;
-    height: 0px;
-}
-
-.choose_character.ng-enter.ng-enter-active {
-    -webkit-transform: rotateX(0deg) rotateZ(0deg);
-    -moz-transform: rotateX(0deg) rotateZ(0deg);
-    -ms-transform: rotateX(0deg) rotateZ(0deg);
-    -o-transform: rotateX(0deg) rotateZ(0deg);
-    transform: rotateX(0deg) rotateZ(0deg);
-    opacity: 1;
-    height: 30px;
 }

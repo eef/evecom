@@ -7,8 +7,15 @@
       <h3>
         <span>EveCom</span>
       </h3>
+      <span flex=""></span>
       <md-button ng-show="user.signedIn" ng-click='signOut()'>Logout</md-button>
-      <md-button ng-show="user.signedIn" ng-href="#/settings">Profile</md-button>
+      <div ng-controller="ActiveCharacterCtrl">
+      <md-button aria-label="Active character - {{active_character.character_name}}" class="md-primary md-fab" style='width: 40px; height: 40px; background: url("http://image.eveonline.com/Character/{{active_character.character_id}}_64.jpg"); background-size: 40px 40px; background-repeat: no-repeat;' ng-click="show_grid_bottom_sheet()">
+        <md-tooltip>
+          {{active_character.character_name }} active
+        </md-tooltip>
+      </md-button>
+      </div>
     </div>
   </md-toolbar>
  </div>

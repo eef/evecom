@@ -1,15 +1,17 @@
-<div layout="row" layout-margin>
-  <div class="md-whiteframe-z1" flex>
-    <md-content class="md-padding">
-      <div layout="column" layout-margin layout-align="center center">
-        <h3>Welcome to EveCert</h3>
-        <p ng-show="!user.id">
-          Please sign in
-        </p>
-        <p ng-show="user.id">
-          Signed in as {{user.email}}
-        </p>
-      </div>
-    </md-content>
+<div class="md-whiteframe-z1" flex>
+  <div layout="row" layout-margin>
+    <div flex>
+      <md-content class="md-padding">
+        <div layout="column" layout-margin layout-align="center center">
+          <h3>Welcome to EveCert</h3>
+          <p ng-show="!user.id">
+            Please sign in
+          </p>
+          <p ng-show="user.id">
+            Signed in as {{user.email}}
+          </p>
+        </div>
+      </md-content>
+    </div>
   </div>
 </div>

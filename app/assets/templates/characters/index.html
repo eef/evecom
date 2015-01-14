@@ -1,0 +1,24 @@
+<div class="md-whiteframe-z1" flex>
+  <md-toolbar class="md-theme-light">
+    <h1 class="md-toolbar-tools">
+      <span>Characters</span>
+    </h1>
+  </md-toolbar>
+  <md-list>
+    <md-item ng-repeat="character in characters">
+      <md-item-content>
+        <div class="md-tile-left">
+          <img ng-src="http://image.eveonline.com/Character/{{character.character_id}}_256.jpg" class="avatar-medium" alt="{{character.name}}">
+        </div>
+        <div class="md-tile-content">
+          <h3>{{character.character_name}}</h3>
+          <h4>{{character.character_name}}</h4>
+          <p>
+            {{character.character_name}}
+          </p>
+        </div>
+      </md-item-content>
+      <md-divider ng-if="!$last"></md-divider>
+    </md-item>
+  </md-list>
+</div>

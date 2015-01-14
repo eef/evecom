@@ -2,6 +2,11 @@ Rails.application.routes.draw do
 
   scope :api do
     mount_devise_token_auth_for 'User', at: 'auth'
+    resources :characters, controller: :'api/characters', defaults: { format: :json } do
+      collection do
+        get :active, action: :active
+      end
+    end
     resources :eve, controller: :'api/eve', defaults: { format: :json } do
       collection do
         post :characters, action: :characters

@@ -31,7 +31,8 @@ gem 'angular_rails_csrf'
 gem 'angular-rails-templates'
 gem 'omniauth-oauth'
 gem 'mongo'
-gem 'action_eve', :git => "git@github.com:eef/action_eve.git"
+# gem 'action_eve', :git => "git@github.com:eef/action_eve.git"
+gem 'action_eve', :path => "/Users/arthur/Code/action_eve"
 gem 'bson_ext'
 gem 'active_model_serializers'
 

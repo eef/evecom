@@ -1,15 +1,12 @@
 class Api::CharactersController < ApplicationController
-  before_action :set_api_character, only: [:show, :edit, :update, :destroy]
+
+  respond_to :json
 
   # GET /api/characters
   # GET /api/characters.json
   def index
-    @api_characters = Api::Character.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @api_characters }
-    end
+    @characters = current_user.characters
+    render json: @characters.to_json
   end
 
   # GET /api/characters/1
@@ -30,20 +27,37 @@ class Api::CharactersController < ApplicationController
   def edit
   end
 
+  def active
+    if current_user.characters.blank?
+      character = nil
+    else
+      character = current_user.characters.active_character.active_attributes.to_json
+    end
+    render json: character
+  end
+
   # POST /api/characters
   # POST /api/characters.json
   def create
-    @api_character = Api::Character.new(api_character_params)
-
-    respond_to do |format|
-      if @api_character.save
-        format.html { redirect_to @api_character, notice: 'Character was successfully created.' }
-        format.json { render json: @api_character, status: :created }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @api_character.errors, status: :unprocessable_entity }
-      end
+    if current_user.characters.where(:character_id => params[:eve][:character_id]).any?
+      redirect_to(:back, :notice => "Cannot readd character.") and return
     end
+    begin
+      api = ActionEve::API.new(id: params[:eve][:key_id], vcode: params[:eve][:verification_code])
+      user = api.users.first
+      api_char = user.find_character(params[:eve][:character_id].to_i)
+      infos = api_char.info
+      infos.delete(:id)
+      @key_info = user.api_key_info
+      @character = current_user.characters.build(infos)
+      @character.bitmask = @key_info[:bitmask]
+      @character.key_expires = @key_info[:expires]
+      @character.save
+      @character.activate
+    rescue ActionEve::Exceptions::BaseException
+      @exception_message = $!
+    end
+    render json: @character.to_json
   end
 
   # PATCH/PUT /api/characters/1
@@ -77,7 +91,8 @@ class Api::CharactersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def api_character_params
-      params[:api_character]
-    end
+  def api_params
+    puts params
+    params.require(:eve).permit(:character_id)
+  end
 end

@@ -2,7 +2,9 @@ app = angular.module('eveCert', [
   'templates',
   'ngCookies',
   'ngRoute',
+  'ngResource',
   'ngAnimate',
+  'angular-loading-bar',
   'ngAria',
   'ngMaterial',
   'ng-token-auth',
@@ -11,7 +13,7 @@ app = angular.module('eveCert', [
 
 app.constant('VERSION', 1.0);
 
-app.config(['$routeProvider', '$mdThemingProvider', '$authProvider', function($routeProvider, $mdThemingProvider, $authProvider){
+app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
   $routeProvider.when("/",{
     controller: "MainCtrl",
     templateUrl: "home/index.html"
@@ -24,14 +26,29 @@ app.config(['$routeProvider', '$mdThemingProvider', '$authProvider', function($r
   }).when("/add_character", {
     controller: "EveApiCtrl",
     templateUrl: "eve/add_character.html"
+  }).when("/characters", {
+    controller: "ApiCharactersCtrl",
+    templateUrl: "characters/index.html"
   });
+
 }]);
 
-app.run(['VERSION', '$rootScope', '$location', '$mdToast', '$mdSidenav', function(VERSION, $rootScope, $location, $mdToast, $mdSidenav){
+app.run(['VERSION', '$rootScope', '$location', '$mdToast', '$mdSidenav', 'Restangular', function(VERSION, $rootScope, $location, $mdToast, $mdSidenav, Restangular){
+
+  Restangular.addRequestInterceptor(function(element) {
+    $rootScope.loading = true;
+
+    return element;
+  });
+  Restangular.addResponseInterceptor(function(data) {
+    $rootScope.loading = false;
+
+    return data;
+  });
 
   $rootScope.toastPosition = {
-    bottom: true,
-    top: false,
+    bottom: false,
+    top: true,
     left: false,
     right: true
   };
@@ -54,6 +71,7 @@ app.run(['VERSION', '$rootScope', '$location', '$mdToast', '$mdSidenav', functio
   $rootScope.$on('auth:login-success', function(event, user) {
     $location.path("/");
     $rootScope.showToast("Login successful!");
+    $rootScope.$broadcast('refresh_active_character', 'Login');
   });
 
   $rootScope.$on('auth:logout-success', function() {

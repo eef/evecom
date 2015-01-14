@@ -1,43 +1,46 @@
-<div layout="row" layout-margin>
-  <div flex="20">
-
-  </div>
-  <div class="md-whiteframe-z1" flex>
-    <md-content md-scroll-y style="min-height: 100px;" class="md-padding">
-      <form ng-submit="getCharacters(addCharacterForm)" role="form" class="user-sign-in add_characters" ng-show="!showCharacters" flex>
-        <div class="row" layout="column" layout-sm="column" layout-margin layout-align="center center">
-          <h2>Add new characters</h2>
-          <p>
-            We will not store your API information.
-          </p>
-          <p>
-            3258528
-          </p>
-          <p>
-            aZHuGykGjtwH5ODB4WxHeliZ1G5pMT984BmcvmrxhXOsVpx2A0YVEWPl7d4WJyfi
-          </p>
-          <md-text-float class="long" id="key_id" name="key_id" label="Key ID" ng-model="addCharacterForm.key_id" required="required"></md-text-float>
-          <md-text-float class="long" id="verification_code" name="verification_code" label="Verification Code" ng-model="addCharacterForm.verification_code" required="required"></md-text-float>
-        </div>
-        <div layout="column" layout-sm="column" layout-margin layout-align="center center">
-          <md-button class="md-primary md-raised">Get Characters</md-button>
-        </div>
-      </form>
-      <div ng-show="showCharacters" class="choose_character">
-        <div class="row" layout="row" ng-init="add_characters = {}" layout-sm="column" layout-margin layout-align="center center">
-          <div flex layout="column" class="md-padding" layout-align="center center" ng-repeat="character in characters">
-              <md-button class="md-fab" style="width: 150px; height: 150px; background-size: 150px 150px; background-image: url('http://image.eveonline.com/Character/{{character.id}}_256.jpg');"></md-button>
-              <h2>{{character.name}}</h2>
-              <md-checkbox ng-model="add_characters[character.id]" aria-label="{{character.name}}">
+<div class="md-whiteframe-z1" flex>
+  <md-content style="min-height: 100px;">
+    <md-toolbar class="md-theme-light" ng-show="!showCharacters">
+      <h1 class="md-toolbar-tools">
+        <span>Account API Details</span>
+      </h1>
+    </md-toolbar>
+    <form ng-submit="getCharacters(addCharacterForm)" role="form" class="user-sign-in add_characters" ng-show="!showCharacters" flex>
+      <div class="row" layout="column" layout-sm="column" layout-margin layout-align="center center">
+        <md-text-float class="long" id="key_id" name="key_id" label="Key ID" ng-model="addCharacterForm.key_id" required="required"></md-text-float>
+        <md-text-float class="long" id="verification_code" name="verification_code" label="Verification Code" ng-model="addCharacterForm.verification_code" required="required"></md-text-float>
+      </div>
+      <div layout="column" layout-sm="column" layout-margin layout-align="center center">
+        <md-button class="md-primary md-raised">Get Characters</md-button>
+      </div>
+    </form>
+    <div ng-show="showCharacters" class="choose_character">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">
+          <span>Choose characters</span>
+          <span flex=""></span>
+          <md-button ng-href="#/characters" class="md-primary md-raised md-hue-1">Back to Characters</md-button>
+        </h1>
+      </md-toolbar>
+      <md-content>
+        <md-list ng-init="add_characters = {}">
+          <md-item ng-repeat="character in characters">
+            <md-item-content ng-class="{'added-character': add_characters[character.id] == 'added'}" class="list-content">
+              <div class="md-tile-left">
+                <img ng-src="http://image.eveonline.com/Character/{{character.id}}_256.jpg" class="avatar-medium" alt="{{character.name}}">
+              </div>
+              <div class="md-tile-content">
+                <h3>{{character.name}}</h3>
+                <h4>{{character.corporation_name}}</h4>
+              </div>
+              <md-checkbox ng-model="add_characters[character.id]" ng-click="addCharacter(character.id);" ng-class="{'hidden': add_characters[character.id] == 'added'}" aria-label="{{character.name}}">
                 Add
               </md-checkbox>
-          </div>
-        </div>
-        <div layout="row" layout-align="center center">
-          <md-button class="md-raised md-primary" ng-click="addCharacters();">Add Characters</md-button>
-        </div>
-      </div>
-    </md-content>
-  </div>
-  <div flex="20"></div>
+            </md-item-content>
+            <md-divider ng-if="!$last"></md-divider>
+          </md-item>
+        </md-list>
+      </md-content>
+    </div>
+  </md-content>
 </div>
