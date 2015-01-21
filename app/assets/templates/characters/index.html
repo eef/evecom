@@ -8,7 +8,7 @@
     <md-item ng-repeat="character in characters">
       <md-item-content>
         <div class="md-tile-left">
-          <img ng-src="http://image.eveonline.com/Character/{{character.character_id}}_256.jpg" class="avatar-medium" alt="{{character.name}}">
+          <ng-avatar avatar_type="character" avatar_id="{{character.character_id}}" />
         </div>
         <div class="md-tile-content">
           <h3>{{character.character_name}}</h3>
