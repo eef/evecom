@@ -36,6 +36,12 @@ class Api::CharactersController < ApplicationController
     render json: character
   end
 
+  def activate
+    character = current_user.characters.find(params[:id])
+
+    render json: {name: character.character_name, success: character.activate}
+  end
+
   # POST /api/characters
   # POST /api/characters.json
   def create

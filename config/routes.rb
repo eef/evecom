@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :characters, controller: :'api/characters', defaults: { format: :json } do
       collection do
         get :active, action: :active
+        get "/activate/:id", action: :activate
       end
     end
     resources :eve, controller: :'api/eve', defaults: { format: :json } do

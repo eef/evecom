@@ -8,6 +8,10 @@ angular.module('eveCert').factory('CharacterService', [
       },
       all: function() {
         return baseCharacters.getList();
+      },
+      make_active: function(id) {
+        baseCharacters = Restangular.all("characters");
+        return baseCharacters.get("activate/"+id);
       }
       //Restangular.all('users')  // GET: /users
       //.then(function(users) {

@@ -8,6 +8,15 @@ angular.module("eveCert").controller('ApiCharactersCtrl', ['$scope', 'CharacterS
     });
   };
 
+  $scope.make_active = function(character_id) {
+    CharacterService.make_active(character_id).then(function(success){
+      $rootScope.$broadcast('refresh_active_character', "activated");
+      $rootScope.showToast(success.name + ' activated!');
+    }, function(){
+      console.log(res, "failed");
+    });
+  };
+
   $scope.all();
 
 }]);
