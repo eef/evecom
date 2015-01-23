@@ -1,0 +1,81 @@
+<div layout="row" class="row" layout-align="center center" layout-margin>
+  <div flex class="small-panel">
+    <md-toolbar class="md-theme-light">
+      <h1 class="md-toolbar-tools">
+        <span>{{character.character_name}}</span>
+      </h1>
+    </md-toolbar>
+    <md-content style="height: 250px;">
+      <md-list layout="column">
+        <md-item>
+          <md-item-content>
+            <div class="md-tile-content">
+              <h3>{{character.corporation_name}}</h3>
+              <h4>{{character.gender}} {{character.race}} {{character.bloodline}}</h4>
+              <h5>DOB: {{character.dob | date:'MM/dd/yyyy @ h:mma'}}</h5>
+              <h5>Skillpoints: {{character.skill_points | number:0}} SP</h5>
+              <h5>Balance: {{character.account_balance | currency:"":2}} ISK</h5>
+              <h5>Ship: {{character.ship_name}} ({{character.ship_type_name}})</h5>
+              <h5>Location: {{character.last_known_location}}</h5>
+              <h5>Security Status: {{character.security_status | number:2}}</h5>
+            </div>
+          </md-item-content>
+        </md-item>
+      </md-list>
+    </md-content>
+  </div>
+  <div flex layout="column" class="messages">
+    <md-toolbar class="md-theme-light">
+      <h1 class="md-toolbar-tools">
+        <span>Attributes & Implants</span>
+      </h1>
+    </md-toolbar>
+    <md-content style="height: 250px;">
+      <md-list layout="column">
+        <md-item ng-repeat="attr in character.attrs">
+          <md-item-content>
+            <div class="md-tile-content">
+              <h3 style="text-transform: capitalize">
+                {{attr.name}}
+              </h3>
+              <h5 ng-if="attr.implant">
+                Base: {{attr.base}}
+              </h5>
+              <h5 ng-if="attr.implant">
+                {{attr.implant.name}} +{{attr.implant.modifier}}
+              </h5>
+              <h2>
+                {{attr.total}}
+              </h2>
+            </div>
+          </md-item-content>
+        </md-item>
+      </md-list>
+    </md-content>
+  </div>
+  <div flex layout="column"  class="messages">
+    <md-toolbar class="md-theme-light">
+      <h1 class="md-toolbar-tools">
+        <span>Activity</span>
+      </h1>
+    </md-toolbar>
+    <md-content style="height: 250px;">
+      <md-list layout="column">
+        <md-item ng-repeat="message in messages">
+          <md-item-content>
+            <div class="md-tile-left">
+              <ng-avatar avatar-size="small" avatar-id="{{$parent.character.character_id}}" avatar-type="character"></ng-avatar>
+            </div>
+            <div class="md-tile-content">
+              <h3>{{message.what}}</h3>
+              <h4>{{message.who}}</h4>
+              <p>
+                {{message.notes}}
+              </p>
+            </div>
+          </md-item-content>
+        </md-item>
+      </md-list>
+    </md-content>
+  </div>
+</div>

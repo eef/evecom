@@ -23,13 +23,23 @@ class Character < ActiveRecord::Base
   end
 
   def activate
-    active = Character.where(active: true).first
-    active.update_attribute(:active, false) unless active.nil?
+    active_c = Character.where(active: true).first
+    active_c.update_attribute(:active, false) unless active_c.nil? || active_c.eql?(self)
     self.update_attribute(:active, true)
   end
 
   def self.active_character
     where(active: true).first
+  end
+
+  def skills_by_group
+    ret = []
+    SkillBookGroup.order(:name).where(:published => true).each do |skill_book_group|
+      skills = self.skills.where(:skill_book_group_id => skill_book_group)
+      group = {group_name: skill_book_group.name, skills: skills.sort {|a,b| a.skill_book.name <=> b.skill_book.name}, total_sp: skills.sum(:skill_points)}
+      ret << group
+    end
+    ret
   end
 
   def active_attributes
@@ -45,16 +55,17 @@ class Character < ActiveRecord::Base
   end
 
   def attribute_points
-    ret = {}
+    ret = []
     traits = self.traits.first
     TRAITS.each do |trait_name|
-      ret[trait_name] = {}
+      trait = {name: trait_name}
       implant = check_and_build_implant(trait_name)
-      ret[trait_name][:base] = ret[trait_name][:total]  = traits.send(trait_name)
+      trait[:base] = trait[:total]  = traits.send(trait_name)
       unless implant.empty?
-        ret[trait_name][:implant] = implant
-        ret[trait_name][:total] += implant[:modifier]
+        trait[:implant] = implant
+        trait[:total] += implant[:modifier]
       end
+      ret << trait
     end
     ret
   end

@@ -12,12 +12,11 @@ angular.module('eveCert').factory('CharacterService', [
       make_active: function(id) {
         baseCharacters = Restangular.all("characters");
         return baseCharacters.get("activate/"+id);
+      },
+      get_character: function(id) {
+        baseCharacters = Restangular.all("characters");
+        return baseCharacters.get(id);
       }
-      //Restangular.all('users')  // GET: /users
-      //.then(function(users) {
-      //  // returns a list of users
-      //  $scope.user = users[0]; // first Restangular obj in list: { id: 123 }
-      //})
     };
   }
 ]);

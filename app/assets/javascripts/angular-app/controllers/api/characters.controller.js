@@ -1,8 +1,8 @@
-angular.module("eveCert").controller('ApiCharactersCtrl', ['$scope', 'CharacterService', '$rootScope', function($scope, CharacterService, $rootScope) {
+angular.module("eveCert").controller('ApiCharactersCtrl', ['$scope', 'CharacterService', '$rootScope', '$routeParams', '$filter', function($scope, CharacterService, $rootScope, $routeParams, $filter) {
 
   $scope.all = function() {
     CharacterService.all().then(function(characters){
-      $scope.characters = characters
+      $scope.characters = characters;
     }, function(){
       console.log(res, "failed");
     });
@@ -16,6 +16,7 @@ angular.module("eveCert").controller('ApiCharactersCtrl', ['$scope', 'CharacterS
       console.log(res, "failed");
     });
   };
+
 
   $scope.all();
 

@@ -1,24 +1,28 @@
-<div class="md-whiteframe-z1" flex>
+<div flex="20"></div>
+<md-content class="md-whiteframe-z1" flex>
   <md-toolbar class="md-theme-light">
     <h1 class="md-toolbar-tools">
       <span>Characters</span>
     </h1>
   </md-toolbar>
   <md-list>
-    <md-item ng-repeat="character in characters">
+    <md-item layout-sm="column" ng-repeat="character in characters" ng-click="alert('sdasd')">
       <md-item-content>
         <div class="md-tile-left">
-          <ng-avatar avatar_type="character" avatar_id="{{character.character_id}}" />
+          <ng-avatar avatar-type="character" avatar-size="medium" avatar-id="{{character.character_id}}" />
         </div>
         <div class="md-tile-content">
           <h3>{{character.character_name}}</h3>
-          <h4>{{character.character_name}}</h4>
-          <p>
-            <md-button ng-click="make_active(character.id)">Make Active</md-button>
-          </p>
+          <h4>{{character.gender}} {{character.race}} {{character.bloodline}}</h4>
+          <h4>{{character.skill_points | number:0}} SP</h4>
+          <h4>{{character.account_balance | currency:"":2}} ISK</h4>
+          <section layout="row">
+            <md-button ng-href="#/character/{{character.id}}">View</md-button>
+          </section>
         </div>
       </md-item-content>
       <md-divider ng-if="!$last"></md-divider>
     </md-item>
   </md-list>
-</div>
+</md-content>
+<div flex="20"></div>

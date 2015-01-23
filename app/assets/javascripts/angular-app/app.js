@@ -4,7 +4,6 @@ app = angular.module('eveCert', [
   'ngRoute',
   'ngResource',
   'ngAnimate',
-  'angular-loading-bar',
   'ngAria',
   'ngMaterial',
   'ng-token-auth',
@@ -13,7 +12,7 @@ app = angular.module('eveCert', [
 
 app.constant('VERSION', 1.0);
 
-app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpProvider){
+app.config(['$routeProvider', '$httpProvider', '$mdThemingProvider', function($routeProvider, $httpProvider, $mdThemingProvider){
   $routeProvider.when("/",{
     controller: "MainCtrl",
     templateUrl: "home/index.html"
@@ -29,7 +28,10 @@ app.config(['$routeProvider', '$httpProvider', function($routeProvider, $httpPro
   }).when("/characters", {
     controller: "ApiCharactersCtrl",
     templateUrl: "characters/index.html"
-  });
+  }).when("/character/:id", {
+    controller: "CharacterCtrl",
+    templateUrl: "characters/show.html"
+  });;
 
 }]);
 
@@ -47,8 +49,8 @@ app.run(['VERSION', '$rootScope', '$location', '$mdToast', '$mdSidenav', 'Restan
   });
 
   $rootScope.toastPosition = {
-    bottom: false,
-    top: true,
+    bottom: true,
+    top: false,
     left: false,
     right: true
   };

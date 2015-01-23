@@ -1,0 +1,22 @@
+<div flex layout-margin style="margin-top: 10px;">
+  <div flex style="margin-top: 0px; margin-bottom: 0;" layout="column" ng-repeat="group in character.skills">
+    <md-toolbar style="font-size: 12px; min-height: 0px;">
+      <div class="md-toolbar-tools" style="height: 40px;">
+          <span>{{group.group_name}} // <ng-pluralize count="group.skills.length" when="{'0': 'skills', 'one': 'skill', 'other': '{} skills'}"></ng-pluralize></span>
+      </div>
+    </md-toolbar>
+    <md-content style="max-height: 500px;">
+      <md-list>
+        <md-item ng-repeat="skill in group.skills">
+          <md-item-content>
+            <div class="md-tile-left">
+            </div>
+            <div class="md-tile-content">
+              <h5>{{skill.name}}</h5>
+            </div>
+          </md-item-content>
+        </md-item>
+      </md-list>
+    </md-content>
+  </div>
+</div>

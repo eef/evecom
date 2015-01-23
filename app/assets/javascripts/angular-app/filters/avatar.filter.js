@@ -2,17 +2,29 @@ app.directive('ngAvatar', function() {
   return {
     restrict: 'E',
     replace: true,
-    template: '<img class="avatar-medium" ng-src="{{url}}" />',
+    template: '<img class="avatar-{{size}}" ng-src="{{url}}" />',
     link: function(scope, elem, attrs) {
-      var aType = attrs.avatarType;
-      var aId = attrs.avatarId;
-      var baseUrl = "http://image.eveonline.com/";
-      switch(aType){
-        case "character":
-          scope.url = baseUrl + "Character/"+aId+"_256.jpg";
+      var unWatch = scope.$watch("character", function(v){
+        if(v){
+          unWatch();
+          init();
+        }
+      });
+      function init(){
+        sizes = {
+          'small':'64',
+          'medium':"128",
+          'large': "256"
+        }
+        var type = attrs.avatarType;
+        var id = attrs.avatarId;
+        scope.size = attrs.avatarSize;
+        var baseUrl = "http://image.eveonline.com/";
+        switch(type){
+          case "character":
+            scope.url = baseUrl + "Character/"+id+"_"+sizes[scope.size]+".jpg";
+        }
       }
     }
   }
 });
-
-// <img ng-src="http://image.eveonline.com/Character/{{character.character_id}}_256.jpg" class="avatar-medium" alt="{{character.name}}">

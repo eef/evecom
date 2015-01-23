@@ -12,10 +12,8 @@ class Api::CharactersController < ApplicationController
   # GET /api/characters/1
   # GET /api/characters/1.json
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @api_character }
-    end
+    @character = current_user.characters.find(params[:id])
+    render json: (JSON::parse(@character.to_json).merge({skills: @character.skills_by_group, attrs: @character.attribute_points}))
   end
 
   # GET /api/characters/new
