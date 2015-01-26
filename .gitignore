@@ -17,3 +17,7 @@
 .DS_Store*
 .rvmrc
 .idea/
+
+# ignore npm modules
+node_modules
+npm-debug.log

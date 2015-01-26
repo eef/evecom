@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105035009) do
+ActiveRecord::Schema.define(version: 20150105042036) do
 
   create_table "characters", force: true do |t|
     t.string   "character_name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "character_id"
     t.datetime "dob"
     t.string   "race"
     t.string   "bloodline"
@@ -36,6 +35,33 @@ ActiveRecord::Schema.define(version: 20150105035009) do
     t.datetime "cached_until"
     t.integer  "bitmask"
     t.datetime "key_expires"
+  end
+
+  create_table "market_items", force: true do |t|
+    t.integer  "group_id"
+    t.string   "name"
+    t.text     "description"
+    t.float    "mass",                  limit: 24
+    t.float    "value",                 limit: 24
+    t.float    "capacity",              limit: 24
+    t.integer  "portion_size"
+    t.integer  "race_id"
+    t.decimal  "base_price",                       precision: 19, scale: 4
+    t.boolean  "published"
+    t.integer  "market_group_id"
+    t.float    "chance_of_duplicating", limit: 24
+    t.integer  "icon_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "skill_book_groups", force: true do |t|
+    t.integer  "category_id"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
