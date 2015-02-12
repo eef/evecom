@@ -10,111 +10,22 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require angular-material/angular-material.min
- *= require angular-material-sprites/svg-sprite-navigation
  *= require loading-bar.min
- *= require ng-accordion
  *= require_self
  */
 
-body {
-    background: #40535C !important;
+nav {
+    -webkit-box-shadow: none;
+    -moz-box-shadow:  none;
+    box-shadow:  none;
 }
 
-.long > input {
-    width: 400px;
+blockquote {
+    margin: 20px 0;
+    padding-left: 1.5rem;
+    border-left: 5px solid #77d6ef;
 }
 
-.avatar-small {
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-    margin: 16px;
-}
-
-.avatar-medium {
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    margin: 16px;
-}
-
-.avatar-large {
-    width: 150px;
-    height: 150px;
-    border-radius: 75px;
-    margin: 16px;
-}
-
-.list-content {
-    -webkit-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    -moz-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    -ms-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    -o-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-}
-
-.list-content-padding {
-    padding: 10px;
-}
-
-.added-character {
-    padding-left: 30%;
-    background-color: #BCED91;
-}
-
-.md-tile-content h3, .md-tile-content h4 {
-    -webkit-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    -moz-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    -ms-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    -o-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-}
-
-.hidden {
-    -webkit-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    -moz-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    -ms-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    -o-transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    transition: 400ms cubic-bezier(0.075, 0.820, 0.165, 1.000) all;
-    opacity: 0;
-}
-
-.md-subheader {
-    background-color: #dcedc8;
-    margin: 0px;
-}
-
-#loading-bar .bar {
-    background: #fff;
-}
-#loading-bar-spinner .spinner-icon {
-    border-top-color:  #fff;
-    border-left-color: #fff;
-    display: none;
-}
-#loading-bar .peg {
-    -moz-box-shadow: #fff 1px 0 6px 1px;
-    -ms-box-shadow: #fff 1px 0 6px 1px;
-    -webkit-box-shadow: #fff 1px 0 6px 1px;
-    box-shadow: #fff 1px 0 6px 1px;
-}
-
-/*md-tabs md-tab, .md-header {*/
-    /*background-color: #444444 !important;*/
-    /*color: #ccc !important;*/
-/*}*/
-
-/*.md-toolbar-tools.body {*/
-    /*background: #E0E0E0 !important;*/
-    /*color: #616161;*/
-/*}*/
-
-/*md-tab.active, md-tab:focus {*/
-    /*color: white !important;*/
-/*}*/
-
-
-.normal-status {
-    color: red;
+.pointer {
+    cursor: pointer;
 }

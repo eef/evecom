@@ -1,16 +1,47 @@
+<!--<!DOCTYPE html>-->
+<!--<html ng-app="eveCert">-->
+<!--<head >-->
+  <!--<title>Evecert</title>-->
+  <!--<%= stylesheet_link_tag    'application', media: 'all' %>-->
+  <!--<%= javascript_include_tag 'application' %>-->
+  <!--<%= csrf_meta_tags %>-->
+<!--</head>-->
+<!--<body>-->
+<!--<md-progress-linear ng-show="loading" md-mode="indeterminate" md-scroll-shrink style="z-index: 62; position: absolute; top: 0;"></md-progress-linear>-->
+<!--<ng-include src="'shared/top_navigation.html'"></ng-include>-->
+<!--<ng-include src="'shared/navigation.html'"></ng-include>-->
+<!--<div layout="row" layout-margin id="ng-view" ng-view md-scroll-y>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
-<html ng-app="eveCert">
-<head >
-  <title>Evecert</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
+<html lang="en" ng-app="eveCert">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Starter Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <%= stylesheet_link_tag "application" %>
+
 </head>
 <body>
-<md-progress-linear ng-show="loading" md-mode="indeterminate" md-scroll-shrink style="z-index: 62; position: absolute; top: 0;"></md-progress-linear>
-<ng-include src="'shared/top_navigation.html'"></ng-include>
-<ng-include src="'shared/navigation.html'"></ng-include>
-<div layout="row" layout-margin id="ng-view" ng-view md-scroll-y>
+<nav role="navigation" style="background: none;">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a id="logo-container" href="#/" class="left brand-logo grey-text text-lighten-2"><i class="mdi-action-visibility"></i></a>
+    </div>
+  </div>
+</nav>
+<div class="container" ng-view>
+
 </div>
+
+<%= javascript_include_tag 'application' %>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/js/materialize.js"></script>
+
 </body>
 </html>

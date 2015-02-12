@@ -5,14 +5,14 @@ class Api::CharactersController < ApplicationController
   # GET /api/characters
   # GET /api/characters.json
   def index
-    @characters = current_user.characters
-    render json: @characters.to_json
+    characters = current_user.characters.collect {|character| JSON::parse(character.to_json).merge(skill_queue: character.skill_queue) }
+    render json: characters.to_json
   end
 
   # GET /api/characters/1
   # GET /api/characters/1.json
   def show
-    @character = current_user.characters.find(params[:id])
+    @character = Character.find(params[:id])
     render json: (JSON::parse(@character.to_json).merge({skills: @character.skills_by_group, attrs: @character.attribute_points}))
   end
 

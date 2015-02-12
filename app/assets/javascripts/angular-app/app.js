@@ -7,7 +7,8 @@ app = angular.module('eveCert', [
   'ngAria',
   'ngMaterial',
   'ng-token-auth',
-  'restangular'
+  'restangular',
+  'timer'
 ]);
 
 app.constant('VERSION', 1.0);
@@ -53,6 +54,17 @@ app.run(['VERSION', '$rootScope', '$location', '$mdToast', '$mdSidenav', 'Restan
     top: false,
     left: false,
     right: true
+  };
+
+  $rootScope.romanize = function(number) {
+    map = {
+      "1":"I",
+      "2":"II",
+      "3":"III",
+      "4":"IV",
+      "5":"V"
+    };
+    return(map[number.toString()]);
   };
 
   $rootScope.getToastPosition = function() {

@@ -2,7 +2,7 @@ app.directive('ngAvatar', function() {
   return {
     restrict: 'E',
     replace: true,
-    template: '<img class="avatar-{{size}}" ng-src="{{url}}" />',
+    template: '<img class="{{classes}} avatar-{{size}}" ng-src="{{url}}" />',
     link: function(scope, elem, attrs) {
       var unWatch = scope.$watch("character", function(v){
         if(v){
@@ -17,6 +17,7 @@ app.directive('ngAvatar', function() {
           'large': "256"
         }
         var type = attrs.avatarType;
+        scope.classes = attrs.avatarClasses;
         var id = attrs.avatarId;
         scope.size = attrs.avatarSize;
         var baseUrl = "http://image.eveonline.com/";
