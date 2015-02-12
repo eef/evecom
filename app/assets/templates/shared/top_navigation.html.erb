@@ -1,4 +1,4 @@
-<div class="md-whiteframe-z1" ng-controller="TopNavCtrl" layout="column">
+<div ng-controller="TopNavCtrl" layout="column">
   <md-toolbar md-scroll-shrink style="z-index: 61;">
     <div class="md-toolbar-tools">
       <md-button  layout="row" layout-align="center center" aria-label="Menu" style="padding: 5px; width: 34px; height: 33px;" ng-click="toggleNav()">
@@ -7,8 +7,8 @@
       <h3>
         <span>EveCom</span>
       </h3>
-      <md-button ng-show="user.signedIn" ng-click='signOut()'>Logout</md-button>
-      <md-button ng-show="user.signedIn" ng-href="#/settings">Profile</md-button>
+      <span flex=""></span>
+      <ng-include src="'characters/active_character.html'"></ng-include>
     </div>
   </md-toolbar>
  </div>

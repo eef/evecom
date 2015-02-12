@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
-  before_save :generate_uid
+  before_create :generate_uid
+  has_many :characters
 
   def generate_uid
     self.uid = self.email

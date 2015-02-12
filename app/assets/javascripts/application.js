@@ -21,10 +21,16 @@
 //= require components/angular-material/angular-material
 //
 //= require components/angular-route/angular-route
+//= require components/angular-resource/angular-resource
+//= require components/angular-loading-bar/build/loading-bar
+
 
 //= require angular-rails-templates
 
 //= require components/ng-token-auth/dist/ng-token-auth.min
+
+//= require components/lodash/dist/lodash
+//= require components/restangular/src/restangular
 
 //= require ./angular-app/app
 //= require_tree ../templates

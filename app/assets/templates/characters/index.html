@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col s12 m4" ng-repeat="character in characters">
+    <div class="card">
+      <div class="card-image">
+        <ng-avatar avatar-type="character" avatar-size="large" avatar-id="{{character.character_id}}"></ng-avatar>
+      </div>
+      <div class="card-content">
+        <span class="card-title grey-text text-lighten-1">{{character.character_name.split(" ")[0]}}</span>
+        <blockquote>{{character.skill_points | number:0}} SP</blockquote>
+        <blockquote>{{character.account_balance | currency:"":2}} ISK</blockquote>
+        <blockquote ng-if="character.skill_queue.items.length > 0">
+          <a ng-pluralize class="pointer green-text text-darken-4 activator" count="character.skill_queue.items.length" when="{'0': 'Training inactive', 'one': 'skill', 'other': '{} skills in queue'}"></a>
+        </blockquote>
+        <blockquote ng-if="character.skill_queue.items.length === 0">
+          <a ng-pluralize class="pointer deep-orange-text text-darken-1 activator" count="character.skill_queue.items.length" when="{'0': 'Training inactive', 'one': 'skill', 'other': '{} skills in queue'}"></a>
+        </blockquote>
+      </div>
+      <div class="card-action">
+        <a href="#/sh" class="pointer green-text text-darken-4">Character sheet</a>
+      </div>
+      <div class="card-reveal">
+        <div class="row">
+          <span class="card-title grey-text text-darken-4">
+            <div class="col s12">
+              <strong class="grey-text text-lighten-1">Skill Queue</strong>
+              <i class="mdi-navigation-close right grey-text text-lighten-1"></i>
+            </div>
+          </span>
+        </div>
+        <div class="row">
+          <strong ng-if="character.skill_queue.items.length === 0">Skill queue empty</strong>
+          <ul class="collection" ng-if="character.skill_queue.items.length > 0">
+            <li class="collection-item">
+              <timer countdown="character.skill_queue.total_time" interval="1000">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</timer> left
+            </li>
+            <li class="collection-item" ng-repeat="item in character.skill_queue.items">
+              <strong class="grey-text text-darken-1">{{item.name}} {{romanize(item.level)}}</strong>
+              <p class="grey-text text-lighten-1">
+                Starts: {{item.start_time | date:'MM/dd/yy @ h:mma'}}
+                Ends: {{item.end_time | date:'MM/dd/yy @ h:mma'}}
+                <br />
+                <timer tick-amount="1.2" ng-if="$first" countdown="item.time_left" interval="1000">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</timer>
+                <timer tick-amount="1.2" ng-if="!$first" autostart="false" countdown="item.time_left" interval="1000">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</timer>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

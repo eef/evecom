@@ -1,0 +1,17 @@
+<div flex="10"></div>
+<div flex>
+  <div layout="row" class="row" layout-align="center center">
+    <div flex="33" layout="row" class="row" layout-align="center center">
+      <ng-avatar avatar-size="large" avatar-id="{{character.character_id}}" avatar-type="character"></ng-avatar>
+    </div>
+  </div>
+  <div style="min-height: 500px;">
+    <md-tabs md-selected="selectedIndex">
+      <md-tab ng-repeat="tab in nav_items" label="{{tab.label}}">
+        <ng-include src="tab.partial"></ng-include>
+      </md-tab>
+  </div>
+</div>
+<div flex="10">
+
+</div>

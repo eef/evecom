@@ -1,21 +1,15 @@
-<div layout="row" layout-margin>
-  <ng-include src="'shared/navigation.html'"></ng-include>
-  <div flex="20">
-
-  </div>
-  <div class="md-whiteframe-z1" flex>
-    <form ng-submit="submitRegistration(registrationForm)" role="form" ng-init="registrationForm = {}" class="user-sign-in" flex>
-      <div class="row" layout="column" layout-sm="column" layout-margin layout-align="center center">
-        <p>Register</p>
-        <md-text-float id="email" name="email" label="Email" ng-model="registrationForm.email" required="required"></md-text-float>
-        <md-text-float autocomplete="off" id="password" name="password" label="Password" ng-model="registrationForm.password" type="password" required="required"></md-text-float>
-        <md-text-float autocomplete="off" id="password" name="password_confirmation" label="Confirm Password" ng-model="registrationForm.password_confirmation" type="password" required="required"></md-text-float>
-      </div>
-      <div layout="column" layout-sm="column" layout-margin layout-align="center center">
-        <md-button class="md-primary md-raised">Register</md-button>
-      </div>
-    </form>
-  </div>
-  <div flex="20"></div>
+<div flex="20"></div>
+<div class="md-whiteframe-z1" flex>
+  <form ng-submit="submitRegistration(registrationForm)" role="form" ng-init="registrationForm = {}" class="user-sign-in" flex>
+    <div class="row" layout="column" layout-sm="column" layout-margin layout-align="center center">
+      <p>Register</p>
+      <md-text-float id="email" name="email" label="Email" ng-model="registrationForm.email" required="required"></md-text-float>
+      <md-text-float autocomplete="off" id="password" name="password" label="Password" ng-model="registrationForm.password" type="password" required="required"></md-text-float>
+      <md-text-float autocomplete="off" id="password" name="password_confirmation" label="Confirm Password" ng-model="registrationForm.password_confirmation" type="password" required="required"></md-text-float>
+    </div>
+    <div layout="column" layout-sm="column" layout-margin layout-align="center center">
+      <md-button class="md-primary md-raised">Register</md-button>
+    </div>
+  </form>
 </div>
-<md-icon></md-icon>
+<div flex="20"></div>

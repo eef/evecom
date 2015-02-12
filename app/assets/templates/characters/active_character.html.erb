@@ -1,0 +1,34 @@
+<div ng-controller="ActiveCharacterCtrl" ng-if="user.signedIn" class="dialog-active-character">
+  <script type="text/ng-template" id="skillQueue.html">
+    <md-dialog aria-label="Skill Queue" style="padding: 0;">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">
+          <span>Skill Queue</span>
+        </h1>
+      </md-toolbar>
+      <md-content style="padding: 0;">
+        <md-list>
+          <md-item ng-repeat="item in items">
+            <md-item-content>
+              <div class="md-tile-content">
+                <h4>{{item.name}} {{item.level}}</h4>
+                <h5>Starts: {{item.start_time | date:'MM/dd/yyyy @ h:mma'}}</h5>
+                <h5>Ends: {{item.end_time | date:'MM/dd/yyyy @ h:mma'}}</h5>
+              </div>
+            </md-item-content>
+            <md-divider ng-if="!$last"></md-divider>
+          </md-item>
+        </md-list>
+      </md-content>
+      <div class="md-actions" layout="row">
+        <span flex></span>
+        <md-button ng-click="hide()">
+          Close
+        </md-button>
+      </div>
+    </md-dialog>
+  </script>
+  <md-button aria-label="Active character - {{active_character.character_name}}" class="md-primary md-fab" style='width: 40px; height: 40px; background: url("http://image.eveonline.com/Character/{{active_character.character_id}}_64.jpg"); background-size: 40px 40px; background-repeat: no-repeat;' ng-click="showAdvanced()">
+
+  </md-button>
+</div>
