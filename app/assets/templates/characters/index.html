@@ -6,7 +6,8 @@
       </div>
       <div class="card-content">
         <span class="card-title grey-text text-lighten-1">{{character.character_name.split(" ")[0]}}</span>
-        <blockquote>{{character.skill_points | number:0}} SP</blockquote>
+        <blockquote ng-if="character.skill_queue.items.length > 0"><count-up trained-for="character.skill_queue.items[0].trained_for" start-from="character.skill_points" sp-per-second="sp_per('second', character.skill_queue.items[0].p_attribute, character.skill_queue.items[0].s_attribute, character.attrs)"></count-up></blockquote>
+        <blockquote ng-if="character.skill_queue.items.length === 0">{{character.skill_points | number:0}} SP</blockquote>
         <blockquote>{{character.account_balance | currency:"":2}} ISK</blockquote>
         <blockquote ng-if="character.skill_queue.items.length > 0">
           <a ng-pluralize class="pointer green-text text-darken-4 activator" count="character.skill_queue.items.length" when="{'0': 'Training inactive', 'one': 'skill', 'other': '{} skills in queue'}"></a>
@@ -37,6 +38,7 @@
               <strong class="grey-text text-darken-1">{{item.name}} {{romanize(item.level)}}</strong>
               <p class="grey-text text-lighten-1">
                 Starts: {{item.start_time | date:'MM/dd/yy @ h:mma'}}
+                <br />
                 Ends: {{item.end_time | date:'MM/dd/yy @ h:mma'}}
                 <br />
                 <timer tick-amount="1.2" ng-if="$first" countdown="item.time_left" interval="1000">{{days}}d {{hours}}h {{minutes}}m {{seconds}}s</timer>

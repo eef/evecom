@@ -2,7 +2,6 @@ angular.module("eveCert").controller('ApiCharactersCtrl', ['$scope', 'CharacterS
 
   $scope.all = function() {
     CharacterService.all().then(function(characters){
-      console.log(characters[0]);
       $scope.characters = characters;
     }, function(){
       console.log(res, "failed");

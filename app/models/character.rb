@@ -80,9 +80,7 @@ class Character < ActiveRecord::Base
     queue[:currently_training] = training_skill
     items.each do |item|
       sk = self.skills.find_by_skill_book_id(item[:skill])
-      if sk.nil?
-        sk = SkillBook.find(item[:skill])
-      end
+      skb = SkillBook.find(item[:skill])
       unless sk.nil?
         group_id = sk.skill_book_group_id
         item[:skill] = sk
@@ -93,6 +91,8 @@ class Character < ActiveRecord::Base
         end
       end
       item[:name] = sk.name
+      item[:p_attribute] = skb.primary_attribute
+      item[:s_attribute] = skb.secondary_attribute
     end
     queue[:items] = items
     queue

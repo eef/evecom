@@ -5,7 +5,7 @@ class Api::CharactersController < ApplicationController
   # GET /api/characters
   # GET /api/characters.json
   def index
-    characters = current_user.characters.collect {|character| JSON::parse(character.to_json).merge(skill_queue: character.skill_queue) }
+    characters = current_user.characters.collect {|character| JSON::parse(character.to_json).merge(skill_queue: character.skill_queue, attrs: character.attribute_points) }
     render json: characters.to_json
   end
 

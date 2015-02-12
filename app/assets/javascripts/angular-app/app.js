@@ -8,7 +8,8 @@ app = angular.module('eveCert', [
   'ngMaterial',
   'ng-token-auth',
   'restangular',
-  'timer'
+  'timer',
+  'countUp'
 ]);
 
 app.constant('VERSION', 1.0);
@@ -65,6 +66,31 @@ app.run(['VERSION', '$rootScope', '$location', '$mdToast', '$mdSidenav', 'Restan
       "5":"V"
     };
     return(map[number.toString()]);
+  };
+
+  $rootScope.sp_per = function(timeScale, pa, sa, charAttributes) {
+
+    angular.forEach(charAttributes, function(value, key) {
+      if(value.name === pa) {
+        pa = value.total;
+      }
+      if(value.name === sa) {
+        sa = value.total;
+      }
+    });
+
+    switch (timeScale) {
+      case 'minute':
+        ret = parseFloat(pa + (sa / 2));
+        break;
+      case 'hour':
+        ret = parseFloat(((pa + (sa / 2)) * 60) - 1);
+        break;
+      case 'second':
+        ret = parseFloat(((pa + (sa / 2)) / 60));
+        break;
+    }
+    return ret;
   };
 
   $rootScope.getToastPosition = function() {
